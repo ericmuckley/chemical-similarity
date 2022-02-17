@@ -1,10 +1,19 @@
 body {
-  background-color: #dee2e6;;
+  background-color: white;
 }
 
-input, select {
-  border: 1px solid darkorange !important;
+.app-title {
+  color: white;
+  cursor: default;
+  font-size:2rem; 
+  text-shadow: 0px 1px 1px lightgreen;
 }
+
+
+input, select {
+  border: 1px solid #008B8B !important;
+}
+
 
 
 
@@ -23,19 +32,19 @@ label:focus,
 .btn:active,
 .btn.active
 {
-  outline: 1px solid orange !important;
+  outline: 1px solid #008B8B !important;
   -webkit-appearance: none !important;
   box-shadow: none !important;
 }
 
 
 .my-link {
-  color: darkorange;
+  color: #008B8B;
   text-decoration: none;
   cursor: pointer;
 }
 .my-link:hover{
-  color: darkorange;
+  color: black;
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 0.2rem;
@@ -43,7 +52,7 @@ label:focus,
 }
 
 .my-div {
-  border: 1px solid darkorange;
+  border: 1px solid #008B8B;
   border-radius: 15px;
   padding: 15px;
   background-color: #dee2e6;
@@ -53,7 +62,7 @@ label:focus,
 
 
 .navbar .nav-link {
-  color: darkorange;
+  color: lightgreen;
   font-size: 1.2rem;
   /*
   font-weight: 400;
@@ -64,7 +73,7 @@ label:focus,
   */
 }
 .navbar .nav-link:hover {
-  color: white;
+  color: black;
   /*
   border-bottom: 5px solid #dee2e6;
   margin-bottom: -5px;
@@ -73,12 +82,12 @@ label:focus,
 
 
 .fake-link {
-  color: black;
+  color: #008B8B;
   text-decoration: underline;
   cursor: pointer;
 }
 .fake-link:hover{
-  color: darkorange;
+  color: black;
   cursor: pointer;
   text-decoration: underline;
   /*

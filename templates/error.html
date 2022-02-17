@@ -1,0 +1,9 @@
+{% extends "_base.html" %}
+{% block main %}
+
+<div class="text-center">
+  <p class="text-align-center">{{error_num}} - There is no page here</p>
+  <p class="lead"><a href="{{ url_for('index') }}" class="my-link">Return home</a></p>
+</div>
+
+{% endblock %}

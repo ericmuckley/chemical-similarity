@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+
+{% block main %}
+
+    <div class="d-flex justify-content-between" style='display:flex; align-items:flex-end;'>
+        <h5>Upload a CSV file</h5>
+        <div class='fake-link px-5' id="use-example-csv-btn" style="font-size:1rem;">
+        Don't have a CSV file ready? Use an example file
+        </div>
+    </div>
+    <input class="form-control form-control-sm rounded-pill mb-3" type="file" id="file-upload" accept=".csv,.CSV">
+
+
+    <select class="form-select">
+        <option>Heeyy</option>
+    </select>
+
+    <input class="form-control" type="text">
+
+    <div class="text-center mt-2" id='loading-div' style="display:none;">
+        <h3>Loading dataset...</h3>
+        <div class="spinner-border" style="width: 5rem; height:5rem;">
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

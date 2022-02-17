@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    {% block title %}<title>Chemical similarity</title>{% endblock %}
+    <title>Chemical similarity</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    {% block styles %}{% endblock %}
+  </head>
+
+  <body>
+
+    <nav class="navbar fixed-top bg-secondary my-0 p-0 d-flex justify-content-between" id="navbar">
+      <div>
+      </div>
+      <span class="app-title">
+        <strong>chemical&nbsp;similarity&nbsp;explorer</strong>
+      </span>
+      <div class='nav-link'>
+        <a href="https://github.com/ericmuckley/data-buddy" target="_blank" class='nav-link'>
+          <i class="bi bi-github"></i>
+        </a>
+      </div>
+    </nav>  
+
+    <main id="main-content" class="p-5 mt-5">
+      {% block main %}{% endblock %}
+    </main>
+
+    <script src="static/js/d3.min.js"></script>
+    <script src="static/js/plotly-latest.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <!--
+    <script src="static/js/utils.js"></script>
+    <script src="static/js/init.js"></script>
+    
+
+    <script src="static/js/plotly_utils.js"></script>
+    <script src="static/js/plotting.js"></script>
+    -->
+  </body>
+</html>
+
+

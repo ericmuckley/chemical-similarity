@@ -4,9 +4,6 @@ from utils import utils
 app = Flask(__name__)
 
 
-@app.route("/")
-def index():
-    return render_template("index.html")
 
 @app.route("/get_similarities", methods=["POST"])
 def get_similarities():
@@ -18,6 +15,30 @@ def get_similarities():
     return {"similarities": similarities}
 
 
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+
+
+
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    """This page is returned when application experiences a 404 error"""
+    return render_template("error.html", error_num=404), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    """This page is returned when application experiences a 500 error"""
+    return render_template("error.html", error_num=500), 500
 
 if __name__ == "__main__":
     app.run(debug=True)

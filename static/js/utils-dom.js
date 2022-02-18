@@ -49,7 +49,7 @@ const dom = {
         };
       } else if (k === "innerHTML") {
         el.innerHTML = v;
-      } else if (['id', 'name', 'type', 'href', 'target', 'text', 'value'].includes(k)) {
+      } else if (['id', 'src', 'name', 'type', 'href', 'target', 'text', 'value', 'height', 'width'].includes(k)) {
         el.setAttribute(k, v);
       } else if (k === "children") {
         for (let c of v){

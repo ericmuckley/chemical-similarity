@@ -7,7 +7,26 @@ from rdkit.Chem import AllChem, Draw
 from sklearn.decomposition import PCA
 
 
-def smiles_to_svg(smiles):
+def get_pca(smiles_list: list):
+    """From a list of SMILES strings, get thir 2D PCA representation"""
+    # get array of all the molecular fingerprints
+    for si, s in enumerate(smiles_list):
+        mol = Chem.MolFromSmiles(s)
+        fp = Chem.RDKFingerprint(mol)
+        bitlist = list(fp.ToBitString())
+        if si == 0:
+            fp_array = np.empty((len(smiles_list), len(bitlist)))
+        fp_array[si] = bitlist
+
+    # perform PCA
+    pca_model = PCA(n_components=2)
+    pca = pca_model.fit_transform(fp_array)
+    # normlize PCA componenets
+    pca = (pca - pca.min(0)) / pca.ptp(0)
+    return pca.tolist()
+
+
+def smiles_to_svg(smiles: str):
     """Convert a smiles string to an SVG string"""
     mol = Chem.MolFromSmiles(smiles)
     Compute2DCoords(mol)
@@ -33,7 +52,7 @@ def get_similarities(smiles0: str, smiles_list: list):
 
 
 
-
+'''
 
 def draw_molecules(smiles_list, source, img_dir):
     """
@@ -87,3 +106,4 @@ def run_pca(X, n_components=2):
     Xpca = pca.fit_transform(X)
     df = pd.DataFrame({f"pca-{i}": Xpca[:, i] for i in range(Xpca.shape[1])})
     return df, pca
+'''

@@ -1,5 +1,5 @@
 function getPlotlySize() {
-  return 300;
+  return 350;
 };
 
 function getPlotlyMargin() {
@@ -13,7 +13,7 @@ function getbackgroundColor() {
 function getPlotlyConfig(){
   var REMOVE_MODEBARS = [
       //'resetScale2d', 'resetCameraDefault3d',
-      //'zoom2d', 'pan2d', 'select2d', 'lasso2d',
+      'zoom2d', 'pan2d',// 'select2d', 'lasso2d',
       'zoomIn2d', 'zoomOut2d', 'autoScale2d',
       'zoom3d', 'pan3d', 'orbitRotation', 'tableRotation', 'handleDrag3d',
       'resetCameraLastSave3d', 'hoverClosest3d', 'hoverClosestCartesian', 'hoverCompareCartesian',

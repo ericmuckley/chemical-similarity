@@ -5,6 +5,13 @@ app = Flask(__name__)
 
 
 
+@app.route("/get_pca", methods=["POST"])
+def get_pca():
+    smiles_list = request.json.get("smiles_list")
+    pca = utils.get_pca(smiles_list)
+    return {"pca": pca}
+
+
 @app.route("/get_similarities", methods=["POST"])
 def get_similarities():
     r = request.get_json()
@@ -14,14 +21,12 @@ def get_similarities():
     )
     return {"similarities": similarities}
 
-
 @app.route("/draw_smiles", methods=["POST"])
 def draw_smiles():
     """Draw a smiles string as an SVG string"""
     smiles = request.json.get("smiles")
     drawing = utils.smiles_to_svg(smiles)
-    print(drawing)
-    return {"img": drawing, "smiles": smiles}
+    return {"svg": drawing, "smiles": smiles}
 
 
 

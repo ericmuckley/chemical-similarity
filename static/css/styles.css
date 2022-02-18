@@ -6,7 +6,7 @@ body {
   color: white;
   cursor: default;
   font-size:2rem; 
-  text-shadow: 0px 1px 1px #198754;
+  text-shadow: 1px 1px 1px black;
 }
 
 .color-0 {
@@ -19,15 +19,29 @@ input, select {
 }
 
 
+.card {
+  border: 1px solid #198754;
+  border-radius: 15px;
+}
+.card-header {
+  color: white;
+  background-color: #198754;
+  border: 0px solid #198754;
+  border-radius: 12px 12px 0px 0px !important;
+
+}
+
+
 
 
 select:hover,
 select:active,
-textarea:hover, 
-input:hover, 
+select:focus,
+textarea:hover,
 textarea:active, 
-input:active, 
 textarea:focus, 
+input:hover, 
+input:active, 
 input:focus,
 button:focus,
 button:active,
@@ -42,13 +56,32 @@ label:focus,
 }
 
 
-.my-div {
+
+.cdiv {
   border: 1px solid #198754;
-  border-radius: 15px;
-  padding: 15px;
-  background-color: #dee2e6;
+  border-radius: 25px;
+  padding: 0px;
+
+}
+.cdiv-header {
+  color: white;
+  background-color: #198754;
+  border: 1px solid #198754;
+  border-radius: 25px 25px 0px 0px;
+  padding: 8px;
+  margin-top: -1px;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+.cdiv-body {
+  border-radius: 25px;
+  padding: 10px;
+  /*background-color: #dee2e6;*/
   /*box-shadow: 0px 1px 3px darkorange;*/
 }
+
+
+
 
 .navbar .nav-link {
   color: lightgreen;
@@ -69,31 +102,43 @@ label:focus,
   */
 }
 
+.fig-center {
+  display: flex;
+  justify-content: center;
+  overflow:auto;
+}
+
 
 .my-link {
-  color: #198754;
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
 .my-link:hover{
-  color: black;
+  color: #198754;
   cursor: pointer;
   text-decoration: underline;
-  text-underline-offset: 0.2rem;
-  text-decoration-thickness: 0.3rem;
+  /*
+  
+  text-underline-offset: 0.1rem;
+  text-decoration-thickness: 0.2rem;
+  */
 }
 
 .fake-link {
-  color: #198754;
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
 .fake-link:hover{
-  color: black;
+  color: #198754;
   cursor: pointer;
   text-decoration: underline;
-  text-underline-offset: 0.2rem;
-  text-decoration-thickness: 0.3rem;
+  /*
+  
+  text-underline-offset: 0.1rem;
+  text-decoration-thickness: 0.2rem;
+  */
   /*
   text-underline-offset: 0.2rem;
   text-decoration-thickness: 0.3rem;

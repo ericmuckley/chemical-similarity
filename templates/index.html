@@ -1,12 +1,13 @@
 {% extends "_base.html" %}
 
 {% block scripts %}
+<script src="static/js/plots.js"></script>
 <script src="static/js/init.js"></script>
 {% endblock %}
 
 {% block main %}
 
-    <div class="d-flex justify-content-between" style='display:flex; align-items:flex-end;'>
+    <div class="d-flex justify-content-between mx-0 px-0" style='display:flex; align-items:flex-end;'>
         <h4 class="ps-3">Upload a CSV file</h4>
         <p class='fake-link mb-2 pe-3' id="use-example-csv" style="font-size:1rem;">
         Don't have a CSV file ready? Use an example file
@@ -14,11 +15,59 @@
     </div>
     <input class="form-control form-control-sm rounded-pill mb-3" type="file" id="file-upload" accept=".csv,.CSV">
 
-    <div id="loading-div">
+    <div id="details-div" style="display:none;">
+        <div class="row my-3">
+            <div class="cdiv col mx-2">
+                <div class="cdiv-header text-center" id="selected-mol-header">
+                </div>
+                <div class="cdiv-body fig-center" id="selected-mol-div"> 
+                </div>
+            </div>
+
+            <div class="cdiv mx-2 col">
+                <div class="cdiv-header text-center">
+                    Similarities histogram
+                </div>
+                <div class="cdiv-body">
+                    <select class="form-select form-select-sm mb-3 rounded-pill" id="bin-select">
+                        <option value="10">10 bins</option>
+                        <option value="50">50 bins</option>
+                        <option value="100" selected>100 bins</option>
+                        <option value="500">500 bins</option>
+                        <option value="1000">1000 bins</option>
+                    </select>
+                    <div class="fig-center" id="histogram-plot">
+                    </div>
+                </div>
+            </div>
+
+            <div class="cdiv col mx-2">
+                <div class="cdiv-header text-center">
+                    PCA of molecular fingerprints
+                </div>
+                <div class="cdiv-body fig-center" id="pca-plot">
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-3">
+
+            <div class="cdiv col mx-2">
+                <div class="cdiv-header text-center" id="selected-mol-header">
+                    smiles
+                </div>
+                <div class="cdiv-body fig-center" id="selected-mol-div">
+                    img
+                </div>
+            </div>
+
     </div>
 
-    <div id="img-div">
 
+
+
+
+    <div id="browser-div" class="my-div" style="max-height:500px; overflow:auto">
     </div>
 
 {% endblock %}

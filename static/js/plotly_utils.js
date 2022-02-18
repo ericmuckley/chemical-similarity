@@ -7,7 +7,7 @@ function getPlotlyMargin() {
 };
 
 function getbackgroundColor() {
-  return "#dee2e6";
+  return "white";
 };
 
 function getPlotlyConfig(){

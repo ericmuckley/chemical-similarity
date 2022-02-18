@@ -1,6 +1,6 @@
 // when user clicks on example file link
 dom.get('use-example-csv').addEventListener("click", function() {
-  showLoading('loading-div');
+  dom.showLoading('loading-div');
   var dataUrl = "https://raw.githubusercontent.com/ericmuckley/datasets/master/qm9-small.csv";
   d3.csv(dataUrl).then(function(data) {
     load_data(data);
@@ -9,7 +9,7 @@ dom.get('use-example-csv').addEventListener("click", function() {
 
 // when file is selected from upload field
 dom.get("file-upload").addEventListener("change", function() {
-  showLoading('loading-div');
+  dom.showLoading('loading-div');
   // configure file reader action once file is finished being read
   var reader = new FileReader();
   reader.onload = function(e) {
@@ -31,29 +31,27 @@ function load_data(data) {
   dom.get("file-upload").dataset.data = JSON.stringify(data);
   console.log(data);
 
-  getSimilarities()
+  const smilesList = data.map(x => x.smiles);
+  const smiles0 = smilesList[0];
+  getSimilarities(smiles0, smilesList);
 
+  dom.hideLoading('loading-div');
 
-  hideLoading('loading-div');
+  DrawSmiles("CCC");
 };
 
 
-
-
-
-
-
-
-function showLoading(id){
-  dom.make('div', {
-    parent: id,
-    classes: 'text-center m-2',
-    children: [
-      ['div', {classes: "spinner-border text-success", styles:{width: '5rem', height:"5rem"}}]
-    ],
+function getSimilarities(smiles0, smilesList) {
+  postData(url="/get_similarities", data={"smiles0": smiles0, "smiles_list": smilesList}).then(x => {
+    console.log(x)
   });
 };
 
-function hideLoading(id){
-  dom.get(id).innerHTML = "";
+
+
+function DrawSmiles(smiles) {
+  postData(url="/draw_smiles", data={"smiles": smiles}).then(x => {
+    var div = dom.make('div', {innerHTML: x.img, parent: 'img-div'});
+    
+  });
 };

@@ -2,11 +2,23 @@ import os
 import numpy as np
 import pandas as pd
 from rdkit import Chem, DataStructs
+from rdkit.Chem.rdDepictor import Compute2DCoords
 from rdkit.Chem import AllChem, Draw
 from sklearn.decomposition import PCA
 
 
-def calc_similarities(smiles0: str, smiles_list: list):
+def smiles_to_svg(smiles):
+    """Convert a smiles string to an SVG string"""
+    mol = Chem.MolFromSmiles(smiles)
+    Compute2DCoords(mol)
+    drawer = Draw.rdMolDraw2D.MolDraw2DSVG(300, 300)
+    drawer.DrawMolecule(mol)
+    drawer.FinishDrawing()
+    drawing = drawer.GetDrawingText()
+    return drawing
+
+
+def get_similarities(smiles0: str, smiles_list: list):
     """
     Calculate the Tanimoto similarity between a single smiles
     string (smiles0) and a list of other smiles strings (smiles_list).
@@ -17,6 +29,9 @@ def calc_similarities(smiles0: str, smiles_list: list):
     fps = [Chem.RDKFingerprint(m) for m in mols]
     similarities = [DataStructs.FingerprintSimilarity(fp0, fp) for fp in fps]
     return similarities
+
+
+
 
 
 

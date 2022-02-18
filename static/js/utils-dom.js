@@ -13,7 +13,6 @@ const dom = {
     return id;
   },
 
-
   make (tag="div", info={}) {
     /*
     Make a DOM element.
@@ -72,4 +71,36 @@ const dom = {
     };
   },
 
+};
+
+dom.showLoading = function showLoading(id){
+  dom.make('div', {
+    parent: id,
+    classes: 'text-center m-2',
+    children: [
+      ['div', {classes: "spinner-border text-success", styles:{width: '5rem', height:"5rem"}}]
+    ],
+  });
+};
+
+dom.hideLoading = function (id) {
+  dom.get(id).innerHTML = "";
+};
+
+
+
+// send POST request to retrieve data from the server
+async function postData(url="", data={}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  });
+  return response.json();
+};
+
+// send GET request to retrieve data from the server
+async function getData(url) {
+  const response = await fetch(url, {method: 'GET'});
+  return response.json();
 };

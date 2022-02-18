@@ -15,6 +15,15 @@ def get_similarities():
     return {"similarities": similarities}
 
 
+@app.route("/draw_smiles", methods=["POST"])
+def draw_smiles():
+    """Draw a smiles string as an SVG string"""
+    smiles = request.json.get("smiles")
+    drawing = utils.smiles_to_svg(smiles)
+    print(drawing)
+    return {"img": drawing, "smiles": smiles}
+
+
 
 @app.route("/")
 def index():

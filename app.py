@@ -14,21 +14,24 @@ def get_pca():
 
 @app.route("/get_similarities", methods=["POST"])
 def get_similarities():
-    r = request.get_json()
-    similarities = utils.get_similarities(
-        smiles0=r['smiles0'],
-        smiles_list=r['smiles_list'],
-    )
-    return {"similarities": similarities}
+    try:
+        r = request.get_json()
+        similarities = utils.get_similarities(smiles0=r['smiles0'], smiles_list=r['smiles_list'])
+        return {"msg": "success", "similarities": similarities}
+    except:
+        return {"msg": "fail", "similarities": []}
+
 
 @app.route("/draw_smiles", methods=["POST"])
 def draw_smiles():
     """Draw a smiles string as an SVG string"""
-    smiles = request.json.get("smiles")
-    drawing = utils.smiles_to_svg(smiles)
-    return {"svg": drawing, "smiles": smiles}
-
-
+    try:
+        smiles = request.json.get("smiles")
+        drawing = utils.smiles_to_svg(smiles)
+        return {"msg": "success", "svg": drawing, "smiles": smiles}
+    except Exception as e:
+        print(e)
+        return {"msg": "fail"}
 
 @app.route("/")
 def index():
@@ -37,12 +40,6 @@ def index():
 @app.route("/about")
 def about():
     return render_template("about.html")
-
-
-
-
-
-
 
 @app.errorhandler(404)
 def not_found_error(error):

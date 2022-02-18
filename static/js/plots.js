@@ -28,21 +28,24 @@ function plotHistogram() {
 
 
 function plotPCA() {
+
   const smiles0 = dom.get("file-upload").dataset.selected;
   const pca = JSON.parse(dom.get("file-upload").dataset.pca);
   const smilesList = JSON.parse(dom.get("file-upload").dataset.smilesList);
   const similarities = JSON.parse(dom.get("file-upload").dataset.similarities);
   // get index of currently selected molecule
   const selectedIdx = smilesList.indexOf(smiles0);
+
   // get text to show on hover
   var hoverText = [];
   for (let i=0; i < pca.length; i++){
     hoverText.push(`<b>${smilesList[i]}</b><br>Similarity: <b>${Math.round(similarities[i]*100)/100}</b>`);
   };
+
   const traces = [{
       x: pca.map(x => x[0]),
       y: pca.map(x => x[1]),
-      type: 'scatter',
+      type: 'scattergl',
       mode: 'markers',
       //text: smilesList,
       text: hoverText,
@@ -83,7 +86,7 @@ function plotPCA() {
 
   dom.hideLoading('pca-plot');
   Plotly.newPlot('pca-plot', traces, layout, getPlotlyConfig());
-
+  dom.get('pca-plot').dataset.initialized = "true"
 
   /*
   myPlot.on('plotly_click', function(data){

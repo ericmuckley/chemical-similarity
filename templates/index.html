@@ -8,7 +8,9 @@
 {% block main %}
 
     <div class="d-flex justify-content-between mx-0 px-0" style='display:flex; align-items:flex-end;'>
-        <h4 class="ps-3">Upload a CSV file</h4>
+        <h4 class="ps-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Upload a CSV file containing smiles strings. The file should contain a column header called 'smiles' with one valid smiles string in each row. Other columns may be present but will not be used.">
+            <i class="bi bi-info-circle"></i> Upload a CSV file
+        </h4>
         <p class='fake-link mb-2 pe-3' id="use-example-csv" style="font-size:1rem;">
         Don't have a CSV file ready? Use an example file
         </p>
@@ -18,15 +20,16 @@
     <div id="details-div" style="display:none;">
         <div class="row my-3">
             <div class="cdiv col mx-2">
-                <div class="cdiv-header text-center" id="selected-mol-header">
+                <div class="cdiv-header text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="This is the currently selected molecule. To selcet a new molecule, click a point in the PCA plot.">
+                    <i class="bi bi-info-circle"></i> <span id="selected-mol-header"></span>
                 </div>
                 <div class="cdiv-body fig-center" id="selected-mol-div"> 
                 </div>
             </div>
 
             <div class="cdiv mx-2 col">
-                <div class="cdiv-header text-center">
-                    Similarities histogram
+                <div class="cdiv-header text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="This is a histogram of similarity scores between the selected molecule and all other molecules in the dataset.">
+                    <i class="bi bi-info-circle"></i> Similarities histogram
                 </div>
                 <div class="cdiv-body">
                     <select class="form-select form-select-sm mb-3 rounded-pill" id="bin-select">
@@ -42,33 +45,38 @@
             </div>
 
             <div class="cdiv col mx-2">
-                <div class="cdiv-header text-center">
-                    PCA of molecular fingerprints
+                <div class="cdiv-header text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="This is a PCA representation of all molecules in the dataset, based 2048 standard topographical features of each molecule. Points are colored by their similarity to the selected molecule. Select a new molecule by clicking any point in the plot.">
+                    <i class="bi bi-info-circle"></i> PCA of molecular fingerprints
                 </div>
                 <div class="cdiv-body fig-center" id="pca-plot">
                 </div>
             </div>
         </div>
 
-        <div class="row my-3">
 
-            <div class="cdiv col mx-2">
-                <div class="cdiv-header text-center" id="selected-mol-header">
-                    smiles
-                </div>
-                <div class="cdiv-body fig-center" id="selected-mol-div">
-                    img
+
+
+        <div class="cdiv">
+            <div class="cdiv-header text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="These are most similar molecules to the selected molecule in the dataset. Click on a molecule to select it.">
+                <i class="bi bi-info-circle"></i> Most similar molecules
+            </div>
+            <div class="cdiv-body">
+                <div class="d-flex" id="similar-div" style="overflow:auto;">
                 </div>
             </div>
+        </div>
+        <div class="cdiv">
+            <div class="cdiv-header text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="These are most dissimilar molecules to the selected molecule in the dataset. Click on a molecule to select it.">
+                <i class="bi bi-info-circle"></i> Most disimilar molecules
+            </div>
+            <div class="cdiv-body">
+                <div class="d-flex" id="dissimilar-div" style="overflow:auto;">
+                </div>
+            </div>
+        </div>
 
     </div>
 
-
-
-
-
-    <div id="browser-div" class="my-div" style="max-height:500px; overflow:auto">
-    </div>
 
 {% endblock %}
 

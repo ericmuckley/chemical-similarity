@@ -42,7 +42,8 @@ function plotPCA() {
     hoverText.push(`<b>${smilesList[i]}</b><br>Similarity: <b>${Math.round(similarities[i]*100)/100}</b>`);
   };
 
-  const traces = [{
+  const traces = [
+    {
       x: pca.map(x => x[0]),
       y: pca.map(x => x[1]),
       type: 'scattergl',
@@ -60,20 +61,47 @@ function plotPCA() {
           line: {color: 'white', width: 0.5, opacity: 1},
           colorbar: {thickness: 10},
       },
-  },
-  {
-    x: [pca[selectedIdx][0]],
-    y: [pca[selectedIdx][1]],
-    text: `Selected molecule:<br><b>${smiles0}</b>`,
-    type: 'scatter',
-    mode: 'markers',
-    marker: {
-        color: 'rgba(100,0,0,0)',
-        size: 15,
-        opacity: 1,
-        line: {color: 'black', width: 2, opacity: 1},
     },
-}];
+    {
+      x: [pca[selectedIdx][0]],
+      y: [pca[selectedIdx][1]],
+      text: `Selected molecule:<br><b>${smiles0}</b>`,
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+          color: 'rgba(100,0,0,0)',
+          size: 10,
+          opacity: 1,
+          line: {color: 'gray', width: 1, opacity: 1},
+      },
+    },
+    {
+      x: [pca[selectedIdx][0]],
+      y: [pca[selectedIdx][1]],
+      text: `Selected molecule:<br><b>${smiles0}</b>`,
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+          color: 'rgba(100,0,0,0)',
+          size: 30,
+          opacity: 1,
+          line: {color: 'gray', width: 1, opacity: 1},
+      },
+    },
+    {
+      x: [pca[selectedIdx][0]],
+      y: [pca[selectedIdx][1]],
+      text: `Selected molecule:<br><b>${smiles0}</b>`,
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+          color: 'rgba(100,0,0,0)',
+          size: 50,
+          opacity: 1,
+          line: {color: 'gray', width: 1, opacity: 1},
+      },
+    },
+  ];
   const layout = {
       hovermode: 'closest',
       margin: getPlotlyMargin(),
